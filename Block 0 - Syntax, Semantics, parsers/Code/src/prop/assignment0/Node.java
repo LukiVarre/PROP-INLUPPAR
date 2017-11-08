@@ -4,8 +4,8 @@ package prop.assignment0;
 // TODO: Write code for the inherited methods
 // TODO: Check if AssignmentNode id should be String or char
 class AssignmentNode implements INode {
-    ExpressionNode expr = null;
-    String id;
+    private ExpressionNode expr = null;
+    private String id;
 
     public AssignmentNode(Tokenizer tk) {
         expr = new ExpressionNode(tk);
@@ -24,8 +24,8 @@ class AssignmentNode implements INode {
 }
 
 class ExpressionNode implements INode {
-    TermNode term = null;
-    ExpressionNode expr = null;
+    private TermNode term = null;
+    private ExpressionNode expr = null;
 
     public ExpressionNode(Tokenizer tk) {
         term = new TermNode(tk);
@@ -44,8 +44,8 @@ class ExpressionNode implements INode {
 }
 
 class TermNode implements INode {
-    FactorNode factor = null;
-    TermNode term = null;
+    private FactorNode factor = null;
+    private TermNode term = null;
 
     public TermNode(Tokenizer tk) {
         term = new TermNode(tk);
@@ -64,8 +64,8 @@ class TermNode implements INode {
 }
 
 class FactorNode implements INode {
-    ExpressionNode expr = null;
-    String number;
+    private ExpressionNode expr = null;
+    private String number;
 
     public FactorNode(Tokenizer tk) {
         expr = new ExpressionNode(tk);

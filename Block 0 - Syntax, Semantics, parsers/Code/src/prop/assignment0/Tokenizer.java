@@ -1,6 +1,5 @@
 package prop.assignment0;
 
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +23,15 @@ public class Tokenizer implements ITokenizer {
         symbols.put('[', Token.LEFT_CURLY);
         symbols.put(']', Token.RIGHT_CURLY);
         symbols.put(null, Token.NULL);
+    }
+
+    public static void main(String[] args) {
+        try {
+            Tokenizer t = new Tokenizer();
+            t.open("./program1.txt");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     private void consumeWhiteSpace() throws IOException {
@@ -103,14 +111,5 @@ public class Tokenizer implements ITokenizer {
     @Override
     public Lexeme current() {
         return currentLex;
-    }
-
-    public static void main(String[] args) {
-        try {
-            Tokenizer t = new Tokenizer();
-            t.open("./program1.txt");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 }
