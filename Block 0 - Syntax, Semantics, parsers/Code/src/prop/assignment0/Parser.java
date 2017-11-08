@@ -3,7 +3,7 @@ package prop.assignment0;
 import java.io.IOException;
 
 public class Parser implements IParser {
-    Tokenizer tk = null;
+    private Tokenizer tk = null;
 
     @Override
     public void open(String fileName) throws IOException, TokenizerException {
@@ -18,7 +18,7 @@ public class Parser implements IParser {
             throw new IOException("No open file.");
 
         //TODO: Check if return value is correct
-        return new AssignmentNode();
+        return new AssignmentNode(tk);
     }
 
     @Override
