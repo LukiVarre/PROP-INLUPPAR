@@ -15,13 +15,13 @@ public class Program {
 
         try {
             try {
-                /*if (args.length < 2)
+                if (args.length < 2)
                     throw new Exception("Incorrect number of parameters to program.");
                 inputFileName = args[0];
-                outputFileName = args[1];*/
+                outputFileName = args[1];
 
                 parser = new Parser();
-                parser.open("./parsetree1.txt");
+                parser.open(inputFileName);
                 root = parser.parse();
                 builder = new StringBuilder();
                 builder.append("PARSE TREE:\n");
@@ -29,7 +29,7 @@ public class Program {
                 builder.append("\nEVALUATION:\n");
                 builder.append(root.evaluate(null));
 
-                stream = new FileOutputStream("./testYo.txt");
+                stream = new FileOutputStream(outputFileName);
                 writer = new OutputStreamWriter(stream);
                 writer.write(builder.toString());
             } catch (Exception exception) {
