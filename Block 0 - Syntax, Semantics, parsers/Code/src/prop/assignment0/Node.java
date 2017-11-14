@@ -1,8 +1,5 @@
 package prop.assignment0;
 
-// TODO: Create constructors for the classes & check if have the correct values
-// TODO: Write code for the inherited methods
-// TODO: Check if AssignmentNode id should be String or char
 class AssignmentNode implements INode {
     private ExpressionNode expr = null;
     private String id;
@@ -20,6 +17,7 @@ class AssignmentNode implements INode {
 
     @Override
     public void buildString(StringBuilder builder, int tabs) {
+        builder.append(id + " = " + expr + ";");
     }
 }
 
@@ -28,8 +26,10 @@ class ExpressionNode implements INode {
     private ExpressionNode expr = null;
 
     public ExpressionNode(Tokenizer tk) {
-        term = new TermNode(tk);
-        expr = new ExpressionNode(tk);
+        if (tk.current().equals("ExpressionNode")) {
+            term = new TermNode(tk);
+            expr = new ExpressionNode(tk);
+        }
     }
 
     @Override
@@ -39,7 +39,7 @@ class ExpressionNode implements INode {
 
     @Override
     public void buildString(StringBuilder builder, int tabs) {
-
+        builder.append(term + "[(" + " + " + ")" + expr + "]");
     }
 }
 
@@ -48,8 +48,10 @@ class TermNode implements INode {
     private TermNode term = null;
 
     public TermNode(Tokenizer tk) {
-        term = new TermNode(tk);
-        factor = new FactorNode(tk);
+        if (tk.current().equals("TermNode")) {
+            factor = new FactorNode(tk);
+            term = new TermNode(tk);
+        }
     }
 
     @Override
@@ -59,18 +61,20 @@ class TermNode implements INode {
 
     @Override
     public void buildString(StringBuilder builder, int tabs) {
-
+        builder.append(factor + "[(" + " * " + ")" + term + "]");
     }
 }
 
 class FactorNode implements INode {
     private ExpressionNode expr = null;
-    private String number;
+    private int number;
 
     public FactorNode(Tokenizer tk) {
-        expr = new ExpressionNode(tk);
-        if (tk.current().equals(Token.INT_LIT))
-            number = tk.current().toString();
+        if (tk.current().equals("FactorNode")) {
+            expr = new ExpressionNode(tk);
+            if (tk.current().equals(Token.INT_LIT))
+                number = Integer.parseInt(tk.current().toString());
+        }
     }
 
     @Override
@@ -80,6 +84,7 @@ class FactorNode implements INode {
 
     @Override
     public void buildString(StringBuilder builder, int tabs) {
+        builder.append(number + "(" + expr + ")");
 
     }
 }

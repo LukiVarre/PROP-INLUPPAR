@@ -1,6 +1,6 @@
 PARSE TREE:
 AssignmentNode
-	IDENT a
+   	IDENT a
 	ASSIGN_OP =
 	ExpressionNode
 		TermNode

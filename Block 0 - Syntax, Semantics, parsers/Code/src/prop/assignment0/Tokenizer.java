@@ -25,15 +25,6 @@ public class Tokenizer implements ITokenizer {
         symbols.put(null, Token.NULL);
     }
 
-    public static void main(String[] args) {
-        try {
-            Tokenizer t = new Tokenizer();
-            t.open("./program1.txt");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
     private void consumeWhiteSpace() throws IOException {
         while (Character.isWhitespace(scanner.current()))
             scanner.moveNext();
@@ -65,11 +56,6 @@ public class Tokenizer implements ITokenizer {
             scanner.moveNext();
             return new Lexeme(ch, symbols.get(ch));
         }
-        // TODO: Fråga om return type
-        // TODO: Fråga om ab ba ska skrivas ut eller bara ab
-        // return new Lexeme(ch, symbols.get(ch));
-        //  || Character.isSpaceChar(ch)
-        //  || Character.isSpaceChar(scanner.current())
         return null;
     }
 
@@ -112,4 +98,13 @@ public class Tokenizer implements ITokenizer {
     public Lexeme current() {
         return currentLex;
     }
+
+    /*public static void main(String[] args) {
+        try {
+            Tokenizer t = new Tokenizer();
+            t.open("./parsetree1.txt");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }*/
 }
