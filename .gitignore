@@ -3,8 +3,14 @@
 /Block 0 - Syntax, Semantics, parsers/Code/AssignmentZero.iml
 
 /Block 1 - OOP/Code/.idea/*
-/Block 1 - OOP/Code/out/*
-/Block 1 - OOP/Code/AssignmentOne.iml
+/Block 1 - OOP/Code/node_modules/*
+/Block 1 - OOP/Code/public/*
+/Block 1 - OOP/Code/routes/*
+/Block 1 - OOP/Code/views/*
+/Block 1 - OOP/Code/app.js
+/Block 1 - OOP/Code/Block1.iml
+/Block 1 - OOP/Code/package.json
+/Block 1 - OOP/Code/package-lock.json
 
 /Block 2 - Functional Programming/Code/.idea/*
 /Block 2 - Functional Programming/Code/out/*

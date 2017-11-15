@@ -3,7 +3,10 @@ package prop.assignment0;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+/** Grupp: 10
+ * Lukas Varli
+ * Peter Yakob
+ * */
 public class Tokenizer implements ITokenizer {
     private Scanner scanner = null;
     private Lexeme nextLex = null;
@@ -98,13 +101,4 @@ public class Tokenizer implements ITokenizer {
     public Lexeme current() {
         return currentLex;
     }
-
-    /*public static void main(String[] args) {
-        try {
-            Tokenizer t = new Tokenizer();
-            t.open("./parsetree1.txt");
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }*/
 }

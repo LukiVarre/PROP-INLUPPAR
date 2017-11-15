@@ -1,7 +1,10 @@
 package prop.assignment0;
 
 import java.io.IOException;
-
+/** Grupp: 10
+ * Lukas Varli
+ * Peter Yakob
+ * */
 public class Parser implements IParser {
     private Tokenizer tk;
 
