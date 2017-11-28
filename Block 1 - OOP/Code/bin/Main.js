@@ -22,19 +22,27 @@ myObject.call = function (funcName, funcArgument) {
     }
 };
 
-var findFunc = function (object, funcName, funcArgument) {
+var findFunc = function (object, funcName, funcArg) {
     for (var i = 0; i < object.prototypeList.length; ++i) {
         if (object.prototypeList[i].hasOwnProperty(funcName)) {
-            return object.prototypeList[i][funcName](funcArgument);
+            return object.prototypeList[i][funcName](funcArg);
         } else {
-            return findFunc(object.prototypeList[i], funcName, funcArgument);
+            return findFunc(object.prototypeList[i], funcName, funcArg);
         }
     }
 };
 
-obj0 = myObject.create(null);
-obj0.func = function (arg) {
+var objectOne = myObject.create(null);
+objectOne.func = function (arg) {
     return "func0: " + arg;
 };
-result = obj0.call("func", ["hello"]);
+
+var objectTwo = myObject.create([objectOne]);
+var objectThree = myObject.create([]);
+objectThree.func = function (arg) {
+    return "func2: " + arg;
+};
+
+var objectFour = myObject.create([objectTwo, objectThree]);
+var result = objectFour.call("func", ["hello"]);
 console.log("should print 'func0: hello' ->", result);
