@@ -22,12 +22,12 @@ myObject.call = function (funcName, funcArgument) {
     }
 };
 
-var findFunc = function (object, funcName, funcArg) {
+var findFunc = function (object, funcName, funcArgument) {
     for (var i = 0; i < object.prototypeList.length; ++i) {
         if (object.prototypeList[i].hasOwnProperty(funcName)) {
-            return object.prototypeList[i][funcName](funcArg);
+            return object.prototypeList[i][funcName](funcArgument);
         } else {
-            return findFunc(object.prototypeList[i], funcName, funcArg);
+            return findFunc(object.prototypeList[i], funcName, funcArgument);
         }
     }
 };
