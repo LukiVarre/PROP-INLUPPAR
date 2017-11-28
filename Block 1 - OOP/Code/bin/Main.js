@@ -32,17 +32,9 @@ var findFunc = function (object, funcName, funcArgument) {
     }
 };
 
-var objectOne = myObject.create(null);
-objectOne.func = function (arg) {
+obj0 = myObject.create(null);
+obj0.func = function (arg) {
     return "func0: " + arg;
 };
-
-var objectTwo = myObject.create([objectOne]);
-var objectThree = myObject.create([]);
-objectThree.func = function (arg) {
-    return "func2: " + arg;
-};
-
-var objectFour = myObject.create([objectTwo, objectThree]);
-var result = objectFour.call("func", ["hello"]);
+result = obj0.call("func", ["hello"]);
 console.log("should print 'func0: hello' ->", result);
