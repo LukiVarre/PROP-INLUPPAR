@@ -14,20 +14,26 @@ myObject.create = function (prototypeList) {
     };
 };
 
-myObject.call = function (funcName, funcArgument) {
+// Search for a function called 'funcName'
+myObject.call = function (funcName, funcParameter) {
+    // check if current object has a function called 'funcName'
     if (this.hasOwnProperty(funcName)) {
-        return this[funcName](funcArgument);
+        return this[funcName](funcParameter);
     } else {
-        return findFunc(this, funcName, funcArgument);
+        // call find method if current object does not contain function
+        return find(this, funcName, funcParameter);
     }
 };
 
-var findFunc = function (object, funcName, funcArg) {
+var find = function (object, funcName, funcParameter) {
     for (var i = 0; i < object.prototypeList.length; ++i) {
+        // Check if the 'objects' 'prototypeList' contains a function 'funcName'
         if (object.prototypeList[i].hasOwnProperty(funcName)) {
-            return object.prototypeList[i][funcName](funcArg);
+            //return "Hello this is a test output";
+            return object.prototypeList[i][funcName](funcParameter);
         } else {
-            return findFunc(object.prototypeList[i], funcName, funcArg);
+            // recursive call if current object does not contain function
+            return find(object.prototypeList[i], funcName, funcParameter);
         }
     }
 };
