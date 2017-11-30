@@ -26,7 +26,7 @@ myObject.call = function (funcName, funcParameter) {
 };
 
 var find = function (object, funcName, funcParameter) {
-    for (var i = 0; i < object.prototypeList.length; ++i) {
+    for (var i = 0; i < object.prototypeList.length; i++) {
         // Check if the 'objects' 'prototypeList' contains a function 'funcName'
         if (object.prototypeList[i].hasOwnProperty(funcName)) {
             //return "Hello this is a test output";
@@ -37,7 +37,8 @@ var find = function (object, funcName, funcParameter) {
         }
     }
 };
-
+/*
+// #1
 var objectOne = myObject.create(null);
 objectOne.func = function (arg) {
     return "func0: " + arg;
@@ -52,3 +53,25 @@ objectThree.func = function (arg) {
 var objectFour = myObject.create([objectTwo, objectThree]);
 var result = objectFour.call("func", ["hello"]);
 console.log("should print 'func0: hello' ->", result);
+*/
+
+// #2
+objZero = myObject.create(null);
+objZero.func = function (arg) {
+    return "func0: " + arg;
+};
+objOne = myObject.create([objZero]);
+objTwo = myObject.create([]);
+objThree = myObject.create([objTwo, objOne]);
+res = objThree.call("func", ["hello"]);
+console.log("should print 'func0: hello' ->", res);
+
+/*
+// #3
+obj0 = myObject.create(null);
+obj0.func = function (arg) {
+    return "func0: " + arg;
+};
+r = obj0.call("func", ["hello"]);
+console.log("should print 'func0: hello' ->", r);
+*/
