@@ -32,13 +32,20 @@ var find = function (object, funcName, funcParameter) {
             //return "Hello this is a test output";
             return object.prototypeList[i][funcName](funcParameter);
         } else {
-            // recursive call if current object does not contain function
-            return find(object.prototypeList[i], funcName, funcParameter);
+            for (var j = 0; j < object.prototypeList[i].prototypeList.length; i++) {
+                if (object.prototypeList[i].prototypeList[j].hasOwnProperty(funcName)) {
+                    return find(object.prototypeList[i], funcName, funcParameter);
+                }
+                else {
+
+                }
+            }
+        }
         }
     }
-};
-/*
-// #1
+;
+
+// Exempel Kod 1
 var objectOne = myObject.create(null);
 objectOne.func = function (arg) {
     return "func0: " + arg;
@@ -53,9 +60,9 @@ objectThree.func = function (arg) {
 var objectFour = myObject.create([objectTwo, objectThree]);
 var result = objectFour.call("func", ["hello"]);
 console.log("should print 'func0: hello' ->", result);
-*/
 
-// #2
+
+// Exempel Kod 2
 objZero = myObject.create(null);
 objZero.func = function (arg) {
     return "func0: " + arg;
@@ -66,12 +73,11 @@ objThree = myObject.create([objTwo, objOne]);
 res = objThree.call("func", ["hello"]);
 console.log("should print 'func0: hello' ->", res);
 
-/*
-// #3
+
+// Exempel Kod 3
 obj0 = myObject.create(null);
 obj0.func = function (arg) {
     return "func0: " + arg;
 };
 r = obj0.call("func", ["hello"]);
 console.log("should print 'func0: hello' ->", r);
-*/
