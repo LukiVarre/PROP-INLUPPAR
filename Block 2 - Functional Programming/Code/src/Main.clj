@@ -17,7 +17,7 @@
                `(let ~(subvec vector 0 2))
                (try ~@(subvec vector 2) ~@form)
                (catch java.io.FileNotFoundException e#)
-               (str "FileNotFoundException java.io.FileNotFoundException:� " (.getMessage e#)))))
+               (str "FileNotFoundException java.io.FileNotFoundException: " (.getMessage e#)))))
 
          )
 
