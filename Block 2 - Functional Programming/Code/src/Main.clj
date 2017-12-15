@@ -1,25 +1,10 @@
 (ns Main
   (:import (java.io File FileReader FileNotFoundException)))
 
-(comment "Test Code"
-
-         (defmacro safe [vector & form]
-           (if (list? vector)
-             `(try ~vector)
-             (catch Throwable e#)
-             (str "ArithmeticException java.lang.ArithmeticException: " (.getMessage e#))
-
-             (if (empty? vector)
-               `(try ~form)
-               (catch Throwable e#)
-               (str "Error: Empty Vector" (.getMessage e#))
-
-               `(let ~(subvec vector 0 2))
-               (try ~@(subvec vector 2) ~@form)
-               (catch java.io.FileNotFoundException e#)
-               (str "FileNotFoundException java.io.FileNotFoundException: " (.getMessage e#)))))
-
-         )
+(comment
+  Grupp 10
+  Peter Yakob
+  Lukas Varli)
 
 
 (defmacro safe
@@ -55,3 +40,10 @@ filefound
 missing-file
 (println missing-file)
 
+(macroexpand '(safe (/ 1 0)))
+
+(macroexpand '(safe (/ 10 2)))
+
+(macroexpand '(safe [s (FileReader. (File. "C:/Users/Peter/Documents/GitHub/PROP-INLUPPAR/Block 2 - Functional Programming/file.txt"))] (.read s)))
+
+(macroexpand '(safe [s (FileReader. (File. "missing-file"))] (. s read)))
