@@ -21,11 +21,6 @@
           (catch java.io.FileNotFoundException e# 
            (str "FileNotFoundException java.io.FileNotFoundException: " (.getMessage e#)))))))
 
-
-(macroexpand '(safe [s (FileReader. (File. "C:/Users/Peter/Documents/GitHub/PROP-INLUPPAR/Block 2 - Functional Programming/file.txt"))] (.read s)))
-
-(macroexpand '(safe [s (FileReader. (File. "missing-file"))] (. s read)))
-
 (def divide-zero (safe (/ 1 0)))
 divide-zero
 
@@ -37,3 +32,12 @@ filefound
 
 (def missing-file (safe [s (FileReader. (File. "missing-file"))] (. s read)))
 missing-file
+
+
+(macroexpand '(safe (/ 1 0)))
+
+(macroexpand '(safe (/ 10 2)))
+
+(macroexpand '(safe [s (FileReader. (File. "C:/Users/Peter/Documents/GitHub/PROP-INLUPPAR/Block 2 - Functional Programming/file.txt"))] (.read s)))
+
+(macroexpand '(safe [s (FileReader. (File. "missing-file"))] (. s read)))
