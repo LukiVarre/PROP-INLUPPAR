@@ -3,15 +3,23 @@ A skeleton for Assignment 3 on PROP HT2017 at DSV/SU.
 Peter Idestam-Almquist, 2017-12-14.
 ***/
 
+/***
+Peter Yakob
+Lukas Varli
+Grupp 13
+***/
+
 /*** 
 If you choose to use the tokenizer, uncomment the following line of code:
-:- [tokenizer].
+
 ***/
+:- [tokenizer].
 
 /***
 If you choose to use the tokenizer then call run1/2 as for example:
 ?- run1('program1.txt','myparsetree1.txt').
 ***/
+
 run1(InputFile,OutputFile):-
 	tokenize(InputFile,Program),
 	parse(ParseTree,Program,[]),
@@ -89,7 +97,35 @@ parse(-ParseTree)-->
 ***/
 
 /* WRITE YOUR CODE FOR THE PARSER HERE */
-	
+assignment(assignment(Identifier, assignment_op, Expression, semicolon)) --> ident(Identifier), assignment_op, expression(Expression), semicolon.
+
+ident(ident(Variable)) --> [Variable], {atom(Variable)}.
+
+expression(expression(Term, Operator, Expression)) --> term(Term), expression_operator(Operator), expression(Expression).
+expression(expression(Term)) --> term(Term).
+
+term(term(Factor, Operator, Term)) --> factor(Factor), operator(Operator), term(Term).
+term(term(Factor)) --> factor(Factor).
+
+factor(factor(Value)) --> value(Value).
+factor(factor(Value, Operator, Term)) --> value(Value), operator(Operator), term(Term).
+factor(factor(left_paren, Expression, right_paren)) --> left_paren, expression(Expression), right_paren.
+
+value(int(Number)) --> [Number], {integer(Number)}.
+value(variable(Variable)) --> [Variable], {atom(Variable)}.
+
+assignment_op --> [=].
+expression_operator(add_op) --> [+].
+expression_operator(sub_op) --> [-].
+operator(mult_op) --> [*].
+operator(div_op) --> [/].
+left_paren --> ['('].
+right_paren --> [')'].
+semicolon --> [';'].
+
+parse(ParseTree, Program, []):-
+	assignment(ParseTree, Program, []).
+
 /***
 evaluate(+ParseTree,+VariablesIn,-VariablesOut):-
 	Evaluates a parse-tree and returns the state of the program
@@ -98,3 +134,6 @@ evaluate(+ParseTree,+VariablesIn,-VariablesOut):-
 ***/
 
 /* WRITE YOUR CODE FOR THE EVALUATOR HERE */
+%TODO: Läsin output filen som genereras av parsern & räkna ut resultatet av talen
+evaluate(ParseTree,[],VariablesOut):-
+    write('Hello').
