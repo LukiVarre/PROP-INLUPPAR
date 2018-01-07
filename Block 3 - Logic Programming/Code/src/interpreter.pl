@@ -1,12 +1,12 @@
 /***
-A skeleton for Assignment 3 on PROP HT2017 at DSV/SU.
-Peter Idestam-Almquist, 2017-12-14.
-***/
-
-/***
 Peter Yakob
 Lukas Varli
 Grupp 13
+***/
+
+/***
+A skeleton for Assignment 3 on PROP HT2017 at DSV/SU.
+Peter Idestam-Almquist, 2017-12-14.
 ***/
 
 /*** 
@@ -134,6 +134,6 @@ evaluate(+ParseTree,+VariablesIn,-VariablesOut):-
 ***/
 
 /* WRITE YOUR CODE FOR THE EVALUATOR HERE */
-%TODO: Läsin output filen som genereras av parsern & räkna ut resultatet av talen
+%TODO: Läs in output filen som genereras av parsern & räkna ut resultatet av talen
 evaluate(ParseTree,[],VariablesOut):-
     write('Hello').
